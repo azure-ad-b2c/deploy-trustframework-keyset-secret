@@ -5916,11 +5916,6 @@ function main() {
                 authProvider: new auth_1.ClientCredentialsAuthProvider(tenant, clientId, clientSecret),
                 defaultVersion: "beta"
             });
-            // Then upload the secret
-            let response = yield client.api(`trustFramework/keySets/${name}/uploadSecret`).post({
-                use: "sig",
-                k: value
-            });
             try {
                 // Create in case it does not already exist
                 yield client.api("trustFramework/keySets").create({
@@ -5928,6 +5923,11 @@ function main() {
                 });
             }
             catch (_b) { }
+            // Then upload the secret
+            yield client.api(`trustFramework/keySets/${name}/uploadSecret`).post({
+                use: "sig",
+                k: value
+            });
             core.info("Uploaded secret using Microsoft Graph");
         }
         catch (error) {

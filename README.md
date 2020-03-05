@@ -14,6 +14,7 @@ on: push
 env:
   clientId: 00000000-0000-0000-0000-000000000000
   tenant: my-tenant.onmicrosoft.com
+  facebookClientSecretKeyContainer: B2C_1A_FacebookSecret
 
 jobs:
   build-and-deploy:
@@ -24,8 +25,8 @@ jobs:
     - name: Upload Facebook Client Secret
       uses: azure-ad-b2c/deploy-trustframework-keyset-secret@v1
       with:
-        name: ${{ env.FacebookClientSecretKeyContainer }}
-        value: ${{ secrets.FacebookClientSecret }}
+        name: ${{ env.facebookClientSecretKeyContainer }}
+        value: ${{ secrets.facebookClientSecret }}
         tenant: ${{ env.tenant }}
         clientId: ${{ env.clientId }}
         clientSecret: ${{ secrets.clientSecret }}

@@ -17,18 +17,18 @@ async function main() {
             defaultVersion: "beta"
         });
 
-        // Then upload the secret
-        let response = await client.api(`trustFramework/keySets/${name}/uploadSecret`).post({
-            use: "sig",
-            k: value
-        });
-
         try {
             // Create in case it does not already exist
             await client.api("trustFramework/keySets").create({
                 id: name
             });
         } catch { }
+
+        // Then upload the secret
+        await client.api(`trustFramework/keySets/${name}/uploadSecret`).post({
+            use: "sig",
+            k: value
+        });
 
         core.info("Uploaded secret using Microsoft Graph");
     } catch (error) {
