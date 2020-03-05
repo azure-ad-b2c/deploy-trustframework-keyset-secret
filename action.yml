@@ -1,0 +1,25 @@
+name: 'Deploy Azure AD B2C TrustFramework KeySet secret'
+description: 'A GitHub Action for deploying TrustFramework KeySet secret using the Microsoft Graph'
+author: 'Adam Stoffel'
+branding:
+  icon: 'key'
+  color: 'blue'
+inputs:
+  value:
+    description: 'The TrustFramework KeySet secret value'
+    required: true
+  name:
+    description: 'The TrustFramework KeySet container name'
+    required: true
+  tenant:
+    description: 'The full Azure AD B2C tenant name (e.g.: mytenant.onmicrosoft.com) or GUID'
+    required: true
+  clientId:
+    description: 'The Client ID for a service principal which will be used to authenticate to the Microsoft Graph'
+    required: true
+  clientSecret:
+    description: 'The Client Secret for a service principal which will be used to authenticate to the Microsoft Graph'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
