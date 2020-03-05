@@ -2,7 +2,7 @@ name: 'Deploy Azure AD B2C TrustFramework KeySet secret'
 description: 'A GitHub Action for deploying TrustFramework KeySet secret using the Microsoft Graph'
 author: 'Adam Stoffel'
 branding:
-  icon: 'key'
+  icon: 'lock'
   color: 'blue'
 inputs:
   value:
